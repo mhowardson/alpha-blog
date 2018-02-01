@@ -4,9 +4,11 @@ class CategoryTest < ActiveSupport::TestCase
   
   def setup 
     @category = Category.new(name: "sports")
+    @user = User.new(username: "John", email: "this@isa.test", password: "password", admin: true)
   end
   
   test "category should be valid" do
+    sign_in_as(@user,"password")
     assert @category.valid?
   end
   
